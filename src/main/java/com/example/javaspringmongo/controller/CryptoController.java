@@ -87,7 +87,7 @@ public class CryptoController {
      * @param name path variable (name of the Crypto to retrieved)
      * @return Crypto that matchs the key (JSON), 200 OK or 404 NOT FOUND 
      */
-    @GetMapping(value = "{vname}", produces = "application/json")
+    @GetMapping(value = "{name}", produces = "application/json")
     public ResponseEntity<Crypto> getByKey(@PathVariable("name") String name){
         if(!cryptoService.getByKey(name).isPresent())
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);    
