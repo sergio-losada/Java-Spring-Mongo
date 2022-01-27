@@ -38,7 +38,7 @@ public class Crypto implements Serializable {
     private Date initDate;
 
     // Coin's last transaction date 
-    private Date lastModDate;
+    private Date lastTransactionDate;
 
     // Coin's logo
     private String image;
@@ -61,7 +61,7 @@ public class Crypto implements Serializable {
         this.Type = Type;
         this.description = description;
         this.initDate = initDate;
-        this.lastModDate = lastModDate;
+        this.lastTransactionDate = lastModDate;
     }
     
     public String getCryptoId() {
@@ -104,12 +104,12 @@ public class Crypto implements Serializable {
         this.initDate = initDate;
     }
 
-    public Date getLastModDate() {
-        return this.lastModDate;
+    public Date getLastTransactionDate() {
+        return this.lastTransactionDate;
     }
 
-    public void setLastModDate(Date lastModDate) {
-        this.lastModDate = lastModDate;
+    public void setLastTransactionDate(Date lastModDate) {
+        this.lastTransactionDate = lastModDate;
     }
 
     public String getImage() {
@@ -133,13 +133,13 @@ public class Crypto implements Serializable {
             && Objects.equals(description, crypto.description) 
             && Objects.equals(Type, crypto.Type) 
             && Objects.equals(initDate, crypto.initDate) 
-            && Objects.equals(lastModDate, crypto.lastModDate)
+            && Objects.equals(lastTransactionDate, crypto.lastTransactionDate)
             && Objects.equals(image, crypto.image);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(cryptoId, name, description, Type, initDate, lastModDate, image);
+        return Objects.hash(cryptoId, name, description, Type, initDate, lastTransactionDate, image);
     }
 
 
@@ -151,7 +151,7 @@ public class Crypto implements Serializable {
             ", description='" + getDescription() + "'" +
             ", Type='" + getType() + "'" +
             ", initDate='" + getInitDate() + "'" +
-            ", lastModDate='" + getLastModDate() + "'" +
+            ", lastModDate='" + getLastTransactionDate() + "'" +
             "}";
     }
         

@@ -18,5 +18,5 @@ It can be applied to any crypto coin and has the following attributes available
 - type (payment, altcoin, NFT, DeFi)
 - description
 - initDate (Coin's launch date)
-- lastModDate (Coin's last transaction date) 
+- lastTransactionDate (Coin's last transaction date) 
 - image (Coin's logo)

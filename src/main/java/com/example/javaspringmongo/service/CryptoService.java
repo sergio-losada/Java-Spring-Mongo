@@ -29,7 +29,7 @@ public class CryptoService {
         Date date = new Date();  
         // Automatically registered init and lastMod dates  
         crypto.setInitDate(date);  
-        crypto.setLastModDate(date);
+        crypto.setLastTransactionDate(date);
         return cryptoRepository.save(crypto);
     }
 
@@ -38,7 +38,7 @@ public class CryptoService {
         // initDate must not be altered
         crypto.setInitDate(this.getByKey(cryptoId).get().getInitDate());
         // register automatically the latest lastModDate 
-        crypto.setLastModDate(date);
+        crypto.setLastTransactionDate(date);
         return cryptoRepository.save(crypto);
     }
 
