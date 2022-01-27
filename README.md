@@ -5,9 +5,9 @@ Unit tests have been implemented with Mockito and JUnit5 with TestRestTemplate, 
 ## ENDPOINTS
     GET /crypto
     POST /crypto
-    PUT /crypto/{cryptoId}
-    DELETE /crypto/{cryptoId}
-    GET /crypto/{cryptoId}
+    PUT /crypto/{name}
+    DELETE /crypto/{name}
+    GET /crypto/{name}
 
 ## DTO DETAIL
 The DTO modeled is a basic representation of cryptocurrencies
