@@ -14,13 +14,9 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document("cryptocurrency")
 public class Crypto implements Serializable {
 
-    // Id of the crypto (PK)
+    // Name of the coin (PK)
     @JsonView(Views.ParsedCrypto.class)
     @Id
-    private String cryptoId;
-
-    // Name of the coin
-    @JsonView(Views.ParsedCrypto.class)
     private String name;
     
     // Coin's price in USD
@@ -35,7 +31,7 @@ public class Crypto implements Serializable {
     private String description;
 
     // Coin's launch date
-    private Date initDate;
+    private Date launchDate;
 
     // Coin's last transaction date 
     private Date lastTransactionDate;
@@ -49,27 +45,19 @@ public class Crypto implements Serializable {
     }
 
     // Parameterized constructors
-    public Crypto(String cryptoId, String name, Type Type) {
-        this.cryptoId = cryptoId;
+    public Crypto(String name, double price, Type Type) {
         this.name = name;
+        this.price = price;
         this.Type = Type;
     }
 
-    public Crypto(String cryptoId, String name, Type Type, String description, Date initDate, Date lastModDate) {
-        this.cryptoId = cryptoId;
+    public Crypto(String name, double price, Type Type, String description, Date initDate, Date lastModDate) {
         this.name = name;
+        this.price = price;
         this.Type = Type;
         this.description = description;
-        this.initDate = initDate;
+        this.launchDate = initDate;
         this.lastTransactionDate = lastModDate;
-    }
-    
-    public String getCryptoId() {
-        return this.cryptoId;
-    }
-
-    public void setCryptoId(String cryptoId) {
-        this.cryptoId = cryptoId;
     }
 
     public String getName() {
@@ -78,6 +66,14 @@ public class Crypto implements Serializable {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public double getPrice() {
+        return this.price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
     }
 
     public String getDescription() {
@@ -96,12 +92,12 @@ public class Crypto implements Serializable {
         this.Type = Type;
     }
 
-    public Date getInitDate() {
-        return this.initDate;
+    public Date getLaunchDate() {
+        return this.launchDate;
     }
 
-    public void setInitDate(Date initDate) {
-        this.initDate = initDate;
+    public void setLaunchDate(Date launchDate) {
+        this.launchDate = launchDate;
     }
 
     public Date getLastTransactionDate() {
@@ -128,30 +124,30 @@ public class Crypto implements Serializable {
             return false;
         }
         Crypto crypto = (Crypto) o;
-        return Objects.equals(cryptoId, crypto.cryptoId) 
-            && Objects.equals(name, crypto.name) 
+        return Objects.equals(name, crypto.name) 
+            && Objects.equals(price, crypto.price) 
             && Objects.equals(description, crypto.description) 
             && Objects.equals(Type, crypto.Type) 
-            && Objects.equals(initDate, crypto.initDate) 
+            && Objects.equals(launchDate, crypto.launchDate) 
             && Objects.equals(lastTransactionDate, crypto.lastTransactionDate)
             && Objects.equals(image, crypto.image);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(cryptoId, name, description, Type, initDate, lastTransactionDate, image);
+        return Objects.hash(name, price, description, Type, launchDate, lastTransactionDate, image);
     }
 
 
     @Override
     public String toString() {
         return "{" +
-            " cryptoId;='" + getCryptoId() + "'" +
-            ", name='" + getName() + "'" +
+            " name='" + getName() + "'" +
+            ", price='" + getPrice() + "'" +
             ", description='" + getDescription() + "'" +
             ", Type='" + getType() + "'" +
-            ", initDate='" + getInitDate() + "'" +
-            ", lastModDate='" + getLastTransactionDate() + "'" +
+            ", launchDate='" + getLaunchDate() + "'" +
+            ", lastTransactionDate='" + getLastTransactionDate() + "'" +
             "}";
     }
         

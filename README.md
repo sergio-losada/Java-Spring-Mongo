@@ -12,11 +12,10 @@ Unit tests have been implemented with Mockito and JUnit5 with TestRestTemplate, 
 ## DTO DETAIL
 The DTO modeled is a basic representation of cryptocurrencies
 It can be applied to any crypto coin and has the following attributes available
-- cryptoId
 - name
 - price (coin's price in US dollars, $USD)
 - type (payment, altcoin, NFT, DeFi)
 - description
-- initDate (Coin's launch date)
+- launchDate (Coin's launch date)
 - lastTransactionDate (Coin's last transaction date) 
 - image (Coin's logo)

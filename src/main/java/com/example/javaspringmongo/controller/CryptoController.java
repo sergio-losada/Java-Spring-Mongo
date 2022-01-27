@@ -43,7 +43,7 @@ public class CryptoController {
      */
     @PostMapping(consumes = "application/json")
     public ResponseEntity<Crypto> post(@RequestBody Crypto crypto){ 
-        if(cryptoService.getByKey(crypto.getCryptoId()).isPresent())
+        if(cryptoService.getByKey(crypto.getName()).isPresent())
             return ResponseEntity.status(HttpStatus.CONFLICT).body(null); 
         else {
             this.cryptoService.post(crypto);
@@ -54,45 +54,45 @@ public class CryptoController {
     /**
      * PUT OPERATION
      * @param Crypto request body (Crypto to update)
-     * @param cryptoId path variable (cryptoId of the Crypto to update)
+     * @param name path variable (name of the Crypto to update)
      * @return updated Crypto (JSON), 200 OK or 404 NOT FOUND
      */
-    @PutMapping(value = "{cryptoId}", consumes = "application/json")
-    public ResponseEntity<Crypto> put(@RequestBody Crypto crypto, @PathVariable("cryptoId") String cryptoId){
-        if(!cryptoService.getByKey(cryptoId).isPresent())
+    @PutMapping(value = "{name}", consumes = "application/json")
+    public ResponseEntity<Crypto> put(@RequestBody Crypto crypto, @PathVariable("name") String name){
+        if(!cryptoService.getByKey(name).isPresent())
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null); 
         else {
-            this.cryptoService.put(crypto, cryptoId);
+            this.cryptoService.put(crypto, name);
             return ResponseEntity.status(HttpStatus.OK).body(crypto); 
         }
     }
 
     /**
      * DELETE OPERATION
-     * @param cryptoId path variable (cryptoId of the Crypto to delete)
+     * @param name path variable (name of the Crypto to delete)
      * @return empty response body, 204 NO CONTENT or 404 NOT FOUND
      */
-    @DeleteMapping("{cryptoId}")
-    public ResponseEntity<Void> delete(@PathVariable("cryptoId") String cryptoId){
-        if(!cryptoService.getByKey(cryptoId).isPresent())
+    @DeleteMapping("{name}")
+    public ResponseEntity<Void> delete(@PathVariable("name") String name){
+        if(!cryptoService.getByKey(name).isPresent())
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
         else {
-            this.cryptoService.delete(cryptoId);
+            this.cryptoService.delete(name);
             return ResponseEntity.status(HttpStatus.NO_CONTENT).body(null);
         }
     }
 
     /**
      * GET BY KEY OPERATION
-     * @param cryptoId path variable (cryptoId of the Crypto to retrieved)
+     * @param name path variable (name of the Crypto to retrieved)
      * @return Crypto that matchs the key (JSON), 200 OK or 404 NOT FOUND 
      */
-    @GetMapping(value = "{vcryptoId}", produces = "application/json")
-    public ResponseEntity<Crypto> getByKey(@PathVariable("cryptoId") String cryptoId){
-        if(!cryptoService.getByKey(cryptoId).isPresent())
+    @GetMapping(value = "{vname}", produces = "application/json")
+    public ResponseEntity<Crypto> getByKey(@PathVariable("name") String name){
+        if(!cryptoService.getByKey(name).isPresent())
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);    
         else 
-            return ResponseEntity.status(HttpStatus.OK).body(cryptoService.getByKey(cryptoId).get());
+            return ResponseEntity.status(HttpStatus.OK).body(cryptoService.getByKey(name).get());
     }
 
 }
