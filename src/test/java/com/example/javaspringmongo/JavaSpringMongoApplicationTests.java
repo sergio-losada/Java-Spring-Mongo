@@ -1,7 +1,6 @@
 package com.example.javaspringmongo;
 
 import java.io.IOException;
-//import java.net.ConnectException;
 import java.net.Socket;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -38,7 +37,7 @@ class JavaSpringMongoApplicationTests {
 
     @BeforeEach
     public void init() {
-        container.start();;
+        container.start();
     }
 
     @Test
